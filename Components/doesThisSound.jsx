@@ -63,7 +63,6 @@ const DoesThisSound = () => {
       </Box>
 
       <Flex
-        border={"5px solid black"}
         margin={"auto"}
         width={"70%"}
         mt={"60px"}
