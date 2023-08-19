@@ -1,6 +1,8 @@
-import { Box, border, Image, Flex } from '@chakra-ui/react';
+import { Box, border, Image, Flex, Text, Heading } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
 import ResizableDiv from './changingmobiledivsize';
+import { motion } from "framer-motion";
+import VisibilitySensor from "react-visibility-sensor";
 
 const RotatingBoxes = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -36,8 +38,45 @@ const RotatingBoxes = () => {
 
     return (
         <Flex className="rotating-container" ref={containerRef}>
-            <Box w={"50%"}>
-
+            <Box h={"100%"} w={"50%"}>
+                <Text fontWeight={"bold"} mt={"40%"}>Ahead app</Text>
+                <Box
+                    overflow={"hidden"}
+                    position="relative"
+                >
+                    <VisibilitySensor onChange={(isVisible) => setIsVisible(isVisible)}>
+                        {() => (
+                            <Flex alignItems="center">
+                                <motion.div
+                                    initial={{ opacity: 0, x: -100 }}
+                                    animate={{
+                                        opacity: isVisible ? 1 : 0,
+                                        x: isVisible ? 0 : -100,
+                                    }}
+                                    transition={{ duration: 0.8 }}
+                                    style={{ position: "relative", left: 0 }}
+                                >
+                                    <Heading fontSize={"45px"} textAlign={"start"}>Master your life</Heading>
+                                    <Heading fontSize={"45px"} textAlign={"start"}>
+                                        by mastering
+                                    </Heading>
+                                    <Heading fontSize={"45px"} textAlign={"start"}>
+                                        emotions
+                                    </Heading>
+                                </motion.div>
+                            </Flex>
+                        )}
+                    </VisibilitySensor>
+                </Box>
+                <Flex mt={"30px"} justifyContent={"flex-start"} alignItems={"center"} gap={"10px"}>
+                    <Image w={"120px"} h={"35px"} src='/images/appstoreimg.png' alt='err' />
+                    <Box>
+                        <Text>
+                        ⭐ ⭐ ⭐ ⭐ ⭐
+                        </Text>
+                        <Text>100+ Appstore reviews</Text>
+                    </Box>
+                </Flex>
             </Box>
 
             <Box>
@@ -47,12 +86,8 @@ const RotatingBoxes = () => {
                     <Box mt={"20%"} w={"20%"} ml={"10%"}  ><Image w={"100%"} h={"10%"} src='/images/emogi3.png' alt='error' /></Box>
                 </Box>
 
-                <ResizableDiv/>
+                <ResizableDiv />
             </Box>
-
-
-
-
             {/* <Box className={`rotating-box green ${isVisible ? 'active' : ''}`}></Box>
       <Box className={`rotating-box blue ${isVisible ? 'active' : ''}`}></Box> */}
         </Flex>

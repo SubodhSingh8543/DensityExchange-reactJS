@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Image } from '@chakra-ui/react';
 import React, { useState, useEffect, useRef } from 'react';
 // import './ResizableDiv.css'; // You can define your CSS styles in this file
 
@@ -44,7 +44,7 @@ const ResizableDiv = () => {
     <Box mt={"-97%"} zIndex={10} className={`container ${isExpanded ? 'expanded' : ''}`}>
       <Box zIndex={10} className="resizable-div" ref={resizableDivRef}>
         {/* Your content here */}
-        
+        <Image w={"50%"} h={"100%"} borderRadius={"15px"} src='/images/mobileimg.png' alt='err' />
       </Box>
     </Box>
   );

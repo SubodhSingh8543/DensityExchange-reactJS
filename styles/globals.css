@@ -125,7 +125,7 @@ a {
   justify-content: center;
   align-items: center;
   height: 700px;
-  border: 10px solid red;
+  /* border: 10px solid red; */
   margin-top: 700px;
   background-color: #edebfd;
 }
@@ -191,7 +191,7 @@ a {
 .resizable-div {
   width: 200px;
   height: 200px;
-  background-color: lightblue;
+  background-color: #e2dbfe;
   display: flex;
   align-items: center;
   justify-content: center;
