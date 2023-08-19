@@ -1,4 +1,6 @@
-'use client'
+// 'use client'
+
+import '../styles/Home.module.css';
 
 import {
   Box,
@@ -15,6 +17,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Divider,
 } from '@chakra-ui/react'
 import {
   HamburgerIcon,
@@ -38,21 +41,35 @@ export default function Navbar() {
         borderStyle={'solid'}
         borderColor={useColorModeValue('gray.200', 'gray.900')}
         justifyContent={'space-between'}
-        border={"5px solid red"}
+        // border={"5px solid red"}
+        gap={10}
         align={'center'}>
+    
         <Flex
-          flex={{ base: 1, md: 'auto' }}
+        //   flex={{ base: 1, md: 'auto' }}
           ml={{ base: -2 }}
-          display={{ base: 'flex', md: 'none' }} 
-          border={"5px solid blue"}
+          display={['flex','flex','flex','none' ]} 
+        //   border={"5px solid blue"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          gap={2}
           >
+           {/* <Flex fontFamily={"inherit"} fontStyle={"italic"} fontWeight={"bold"}>
+            dribbble
+           </Flex> */}
           <IconButton
             onClick={onToggle}
             icon={isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />}
             variant={'ghost'}
+            // border={"5px solid blue"}
             aria-label={'Toggle Navigation'}
           />
+
+           <Flex fontFamily={"inherit"} fontSize={"20px"} color={"black"} fontStyle={"none"}  fontWeight={"bold"} >
+           𝒹𝓇𝒾𝒷𝒷𝒷𝓁𝑒
+           </Flex>
         </Flex> 
+       
        {/* <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }} border={"5px solid blue"} > */}
           {/* <Text
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
@@ -61,37 +78,41 @@ export default function Navbar() {
             Logo
           </Text> */}
 
-          <Flex display={{ base: 'none', md: 'flex' }} ml={0} border={"5px solid green"}>
+          <Flex display={['none','none','none','flex' ]} justifyContent={"center"} alignItems={"center"} ml={0}>
+          <Flex fontFamily={"inherit"} color={"black"} mr={5} fontSize={"20px"} fontStyle={"none"} fontWeight={"bold"} display={['block','block','block',"block",'none' ]} >
+          𝒹𝓇𝒾𝒷𝒷𝒷𝓁𝑒
+           </Flex>
             <DesktopNav />
           </Flex>
         {/* </Flex> */}
 
-        <Text>
-            dribbble
-        </Text>
+        <Flex fontFamily={"inherit"} color={"black"} fontSize={"20px"} fontStyle={"none"} fontWeight={"bold"} display={['none','none','none','none', "block" ]} >
+        𝒹𝓇𝒾𝒷𝒷𝒷𝓁𝑒
+        </Flex>
 
         <Stack
           flex={{ base: 1, md: 0 }}
           justify={'flex-end'}
           direction={'row'}
-          border={"5px solid Yellow"}
+        //   border={"5px solid Yellow"}
           spacing={6}>
-          <Button as={'a'} display={{ base: 'none', md: 'inline-flex' }} fontSize={'sm'} fontWeight={400} variant={'link'} href={'#'}>
+          <Button as={'a'} display={{ base: 'none', md: 'inline-flex' }} fontSize={'sm'} fontWeight={"bold"} variant={'link'} href={'#'} color={"black"}>
             Log in
           </Button>
           <Button
             as={'a'}
             fontSize={'sm'}
             fontWeight={600}
-            color={'black'}
-            bg={'#f5f3ef'}
+            color={["white","white","white","white",'black']}
+            bg={["black","black","black","black",'#f5f3ef']}
             href={'#'}
             _hover={{
-              bg: 'pink.300',
+              bg: 'black',
+              color:"white"
             }} colorScheme={{base: 'black'}}>
             Sign up
           </Button>
-          <Button as={'a'} padding={"10px"} display={{ base: 'none', md: 'inline-flex' }} fontSize={'sm'} fontWeight={400} variant={'link'} href={'#'} bg={'black'} _hover={{
+          <Button as={'a'} padding={"10px"} display={['none','none','none',"none",'flex' ]} fontSize={'sm'} fontWeight={400} variant={'link'} href={'#'} bg={'black'} _hover={{
               bg: 'grey',
             }} color={"white"}>
           Hire Creatives
@@ -119,16 +140,19 @@ const DesktopNav = () => {
             <PopoverTrigger>
               <Box
                 as="a"
-                p={2}
+                // p={2}
                 href={navItem.href ?? '#'}
-                fontSize={'sm'}
-                fontWeight={500}
-                color={linkColor}
+                fontSize={"14px"}
+                lineHeight={"14px"}
+                fontWeight={"bold"}
+                color={"black"}
+                ml={2}
+                mr={2}
                 _hover={{
                   textDecoration: 'none',
                   color: linkHoverColor,
                 }}>
-                {navItem.label}
+                  {navItem.label}
               </Box>
             </PopoverTrigger>
 
@@ -191,11 +215,24 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 
 const MobileNav = () => {
   return (
-    <Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={{ md: 'none' }}>
+    <>
+     <Stack bg={useColorModeValue('white', 'gray.800')} p={4} display={['flex','flex','flex','none' ]}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
+      <Divider/>
+      <Text 
+        fontFamily="sans-serif"
+         style={{
+           animation: 'slideInFromLeft 0.7s ease-out',
+         }} 
+        fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')}>
+       {"Log in"}
+      </Text>
     </Stack>
+    
+    </>
+
   )
 }
 
@@ -213,7 +250,12 @@ const MobileNavItem = ({ label, children, href }) => {
         _hover={{
           textDecoration: 'none',
         }}>
-        <Text fontWeight={600} color={useColorModeValue('gray.600', 'gray.200')}>
+        <Text
+         fontFamily="sans-serif"
+         style={{
+           animation: 'slideInFromLeft 0.7s ease-out',
+         }} 
+        fontWeight={600} color={useColorModeValue('black', 'black')}>
           {label}
         </Text>
         {children && (
@@ -243,6 +285,7 @@ const MobileNavItem = ({ label, children, href }) => {
             ))}
         </Stack>
       </Collapse>
+      
     </Stack>
   )
 }
@@ -280,9 +323,6 @@ const NAV_ITEMS = [
     label: 'Go Pro',
     href: '#',
   },
-  {
-    label: 'Log in',
-    href: '#',
-  },
+  
 ]
 
