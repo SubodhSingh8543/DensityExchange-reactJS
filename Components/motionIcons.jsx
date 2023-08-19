@@ -37,8 +37,11 @@ const RotatingBoxes = () => {
     }, []);
 
     return (
-        <Flex className="rotating-container" ref={containerRef}>
-            <Box h={"100%"} w={"50%"}>
+        <Flex className="rotating-container" ref={containerRef} borderRadius={"12px"} w={"70%"} m={"auto"} pl={"40px"} pr={"40px"}>
+            <Box h={"100%"} w={"50%"} overflow={"hidden"}>
+                <Box ml={"40px"} className="rotate" bg={"green"} border={"1px solid green"} w={"100px"} h={"10px"} mt={"25px"} borderTopRadius={"100%"} >
+
+                </Box>
                 <Text fontWeight={"bold"} mt={"40%"}>Ahead app</Text>
                 <Box
                     overflow={"hidden"}
@@ -72,7 +75,7 @@ const RotatingBoxes = () => {
                     <Image w={"120px"} h={"35px"} src='/images/appstoreimg.png' alt='err' />
                     <Box>
                         <Text>
-                        ⭐ ⭐ ⭐ ⭐ ⭐
+                            ⭐ ⭐ ⭐ ⭐ ⭐
                         </Text>
                         <Text>100+ Appstore reviews</Text>
                     </Box>
